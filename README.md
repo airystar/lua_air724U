@@ -2,7 +2,9 @@
 
 ## 介绍
 
-Air724U Lua语言项目
+Air724U Lua语言项目, 源码开放, 自由扩展!! 支持 合宙4G cat.1系列模块, 性能卓越!
+
+![](http://openluat-luatcommunity.oss-cn-hangzhou.aliyuncs.com/images/20200807131012759_lvgl.gif)
 
 ## 开发
 
@@ -27,8 +29,6 @@ Air724U Lua语言项目
 ### 3. 运行demo
 
 用Luatools工具下载core文件和Lua工程目录中的`lib和相应demo文件`就可以运行了。
-
-![](http://openluat-luatcommunity.oss-cn-hangzhou.aliyuncs.com/images/20200807131012759_lvgl.gif)
 
 [Lua脚本开发介绍](https://wiki.openluat.com/doc/luatGuide/#lua)
 
