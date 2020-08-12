@@ -40,7 +40,7 @@ end
 
 local function update_sign()
     quality = net.getRssi()
-    lvgl.img_set_src(sign, "/lua/"..((quality + 1) / 8)..".jpg")
+    lvgl.img_set_src(sign, "/lua/"..math.floor((quality + 1) / 8)..".jpg")
 end
 
 local function btn_event_cb(btn, event)
