@@ -1,3 +1,18 @@
+发布时间：2020/09/05
+修改记录：
+	一、core V20版本修改记录：
+		1、TTS/TTS_FLOAT版本支持SD卡
+		2、支持在lvgl里显示二维码，支持设置style，支持canvas控件
+		3、lua开发820GPS供电引脚设置
+		4、disp显示bug
+		5、TTS支持英文字母播报
+		6、添加audiocore.head_plug接口，配置耳机插拔状态
+		7、添加disp.new disp.getframe接口
+		8、SSL连接过程中，播放TTS卡顿
+	二、lib修改记录：
+		1、增加littlevgl demo
+		2、优化lib库的部分bug
+
 发布时间：2020/05/31 10:10
 修改记录：
     一、lib脚本修改

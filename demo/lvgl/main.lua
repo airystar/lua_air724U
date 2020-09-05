@@ -60,7 +60,9 @@ errDump.request("udp://ota.airm2m.com:9072")
 
 --加载UI功能测试模块
 require "lcd"
-require "ui"
+-- require "ui"
+require "widget"
+-- require "canvas"
 
 require "net"
 

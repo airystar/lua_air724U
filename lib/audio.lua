@@ -46,7 +46,7 @@ local audioQueue = {}
 local sStrategy
 
 local function isTtsStopResultValid()
-    return tonumber(string.match(rtos.get_version(),"Luat_V(%d+)_"))>=8
+    return tonumber(string.match(rtos.get_version(),"(%d+)_RDA"))>=8
 end
 
 
@@ -92,12 +92,15 @@ local function handlePlayInd(item,key,value)
 end
 
 local ttsEngineInited
+local audioTaskWaitPlayEntry
 
 local function audioTask()
     while true do
         if #audioQueue==0 then
             log.info("audioTask","wait LIB_AUDIO_PLAY_ENTRY")
+            audioTaskWaitPlayEntry = true
             sys.waitUntil("LIB_AUDIO_PLAY_ENTRY")
+            audioTaskWaitPlayEntry = false
         end
 
         local item = audioQueue[1]
@@ -113,7 +116,22 @@ local function audioTask()
                 setVolume(item.vol)
                 local result
                 if type(item.path)=="table" then
-                    result = audiocore.play(unpack(item.path))
+                    if (item.path[1]):match("%.amr$") or (item.path[1]):match("%.AMR$") then
+                        local dataBuf = {}
+                        for i=1,#item.path do
+                            table.insert(dataBuf,(io.readFile(item.path[i])):sub(i==1 and 1 or 7,-1))
+                        end
+                        result = audiocore.playdata(table.concat(dataBuf),audiocore.AMR)
+                    elseif (item.path[1]):match("%.pcm$") or (item.path[1]):match("%.PCM$") then
+                        local dataBuf = {}
+                        for i=1,#item.path do
+                            table.insert(dataBuf,io.readFile(item.path[i]))
+                        end
+                        result = audiocore.playdata(table.concat(dataBuf),audiocore.PCM)
+                    else
+                        result = false
+                    end
+                    --result = audiocore.play(unpack(item.path))
                 else
                     result = audiocore.play(item.path)
                 end
@@ -259,7 +277,9 @@ function play(priority,type,path,vol,cbFnc,dup,dupInterval)
         else
             if priority>front.priority or (priority==front.priority and sStrategy==1) then
                 table.insert(audioQueue,item)
-                sys.publish("LIB_AUDIO_PLAY_IND","NEW")
+                if not audioTaskWaitPlayEntry then
+                    sys.publish("LIB_AUDIO_PLAY_IND","NEW")
+                end
             else
                 log.warn("audio.play","priority error")
                 if cbFnc then cbFnc(2) end
@@ -385,7 +405,7 @@ end
 -- 设置为耳机输出：audio.setChannel(1)
 -- 设置为喇叭输出：audio.setChannel(2)
 function setChannel(channel)
-    if tonumber(string.match(rtos.get_version(),"Luat_V(%d+)_"))>=9 then
+    if tonumber(string.match(rtos.get_version(),"(%d+)_RDA"))>=9 then
         audiocore.setchannel(channel)
     else
         ril.request("AT+AUDCH="..(channel==1 and 1 or 2))

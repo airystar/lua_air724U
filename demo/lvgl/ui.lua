@@ -5,6 +5,7 @@ require "sys"
 require "audio"
 require "net"
 require "misc"
+require "lvsym"
 
 scr0 = nil
 
@@ -40,7 +41,7 @@ end
 
 local function update_sign()
     quality = net.getRssi()
-    lvgl.img_set_src(sign, "/lua/"..math.floor((quality + 1) / 8)..".jpg")
+    lvgl.img_set_src(sign, lvgl.SYMBOL_BATTERY_FULL)
 end
 
 local function btn_event_cb(btn, event)
@@ -92,11 +93,11 @@ local function create()
     lvgl.obj_align(bg, nil, lvgl.ALIGN_CENTER, 0, 0)
 
     sign = lvgl.img_create(scr1, nil)
-    lvgl.img_set_src(sign, "/lua/0.jpg")
+    lvgl.img_set_src(sign, lvgl.SYMBOL_BATTERY_FULL)
     lvgl.obj_align(sign, nil, lvgl.ALIGN_IN_TOP_LEFT, 2, 1)
 
     battery = lvgl.img_create(scr1, nil)
-    lvgl.img_set_src(battery, "/lua/b2.bmp")
+    lvgl.img_set_src(battery, lvgl.SYMBOL_NEW_LINE)
     lvgl.obj_align(battery, nil, lvgl.ALIGN_IN_TOP_RIGHT, -2, 1)
 
     clock = lvgl.label_create(scr1, nil)

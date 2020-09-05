@@ -10,6 +10,7 @@ VERSION = "2.0.0"
 3、注册用户之后，如果没有对应的项目，创建一个新项目
 4、进入对应的项目，点击左边的项目信息，右边会出现信息内容，找到ProductKey：把ProductKey的内容，赋值给PRODUCT_KEY变量
 ]]
+--【【【【【【注意：此处的PRODUCT_KEY仅供演示使用，不保证一直能用，量产项目中一定要使用自己在iot.openluat.com中创建的项目productKey】】】】】】
 PRODUCT_KEY = "v32xEAKsGTIEQxtqgwCldp5aPlcnPs3K"
 
 --加载日志功能模块，并且设置日志输出等级
