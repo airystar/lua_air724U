@@ -15,7 +15,8 @@ Air724U Lua语言项目, 源码开放, 自由扩展!! 支持 合宙4G cat.1系�
 ### 2. 下载core
 
 **V20版本，更新时间2020-09-05**
-具体修改记录见readme.txt
+
+具体修改记录见release notes.txt
 
 ### 3. 运行demo
 
