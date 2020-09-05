@@ -14,17 +14,8 @@ Air724U Lua语言项目, 源码开放, 自由扩展!! 支持 合宙4G cat.1系�
 
 ### 2. 下载core
 
-**V19版本，更新时间2020-08-05**
-
-新增LittleVGL库,自带超炫动画效果
-
-* [Luat_RDA8910](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200803200044_Luat_V0019_RDA8910.zip)
-
-* [Luat_RDA8910_FLOAT](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200803200230_Luat_V0019_RDA8910_FLOAT.zip)
-* [Luat_RDA8910_TTS](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200803200816_Luat_V0019_RDA8910_TTS.zip)
-* [Luat_RDA8910_TTS_FLOAT](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200803200949_Luat_V0019_RDA8910_TTS_FLOAT.zip)
-* [Luat_RDA8910_LVGL](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200805140018_Luat_V0019_RDA8910_LVGL.zip)
-* [Luat_RDA8910_LVGL_FLOAT](http://openluat-erp.oss-cn-hangzhou.aliyuncs.com/erp_site_file/product_file/sw_file_20200805135752_Luat_V0019_RDA8910_LVGL_FLOAT.zip)
+**V20版本，更新时间2020-09-05**
+具体修改记录见readme.txt
 
 ### 3. 运行demo
 
