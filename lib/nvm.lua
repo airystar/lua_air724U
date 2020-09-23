@@ -13,7 +13,7 @@ module(..., package.seeall)
 --para：实时参数表
 --config：默认参数表
 paraname, paranamebak = "/nvm_para.lua", "/nvm_para_bak.lua"
-local para, libdftconfig, configname, econfigname = {}
+local para, libdftconfig, configname, cconfigname, econfigname = {}
 local sBurnSave
 
 --[[
@@ -180,7 +180,7 @@ end
 function init(defaultCfgFile,burnSave)
     local f
     f, libdftconfig = safePcall(defaultCfgFile:match("(.+)%.lua"))
-    configname, econfigname = "/lua/" .. defaultCfgFile, "/lua/" .. defaultCfgFile .. "c"
+    configname, cconfigname, econfigname = "/lua/" .. defaultCfgFile, "/lua/" .. defaultCfgFile .. "c", "/lua/" .. defaultCfgFile .. "e"
     
     sBurnSave = burnSave
     if burnSave then
@@ -270,6 +270,7 @@ function restore()
     os.remove(paraname)
     os.remove(paranamebak)
     local fpara, fconfig = io.open(paraname, "wb"), io.open(configname, "rb")
+    if not fconfig then fconfig = io.open(cconfigname, "rb") end
     if not fconfig then fconfig = io.open(econfigname, "rb") end
     fpara:write(fconfig:read("*a"))
     fpara:close()

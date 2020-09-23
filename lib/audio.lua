@@ -399,9 +399,10 @@ end
 
 --- 设置音频输出通道
 -- 设置后实时生效
--- @number[opt=2] channel，1：headphone耳机    2：speaker喇叭
+-- @number[opt=2] channel，0：earphone听筒  1：headphone耳机    2：speaker喇叭
 -- @return nil
 -- @usage
+-- 设置为听筒输出：audio.setChannel(0)
 -- 设置为耳机输出：audio.setChannel(1)
 -- 设置为喇叭输出：audio.setChannel(2)
 function setChannel(channel)
